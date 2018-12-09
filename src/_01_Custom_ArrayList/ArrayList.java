@@ -3,7 +3,8 @@ package _01_Custom_ArrayList;
 @SuppressWarnings("unchecked")
 
 public class ArrayList <T>{
-	
+	ArrayList<T> al = new ArrayList<>(); 
+	int r;
 	public ArrayList() {
 	}
 	
@@ -17,7 +18,7 @@ public class ArrayList <T>{
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
-		
+	
 	}
 	
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
@@ -31,5 +32,10 @@ public class ArrayList <T>{
 	public boolean contains(T val) {
 		
 		return false;
+	}
+
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

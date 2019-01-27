@@ -113,7 +113,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private void setFoodLocation() {
 		//1. Create a new Location object that is set to a random location
-		
+		Location ll = new Location((int)Math.random() * WIDTH, (int) Math.random() * HEIGHT);
 		//2. set the foodLocation variable equal to the Location object you just created.
 		//   use the snake's isLocationOnSnake method to make sure you don't put the food on the snake
 		
@@ -122,9 +122,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	private void gameOver() {
 		
 		//1. stop the timer
-		
+		timer.stop();
 		//2. tell the user their snake is dead
-		
+		JOptionPane.showMessageDialog(null, "Your snake is dead.");
 		//3. ask them if they want to play again.
 		
 		//4. if they want to play again
@@ -141,13 +141,19 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//1. update the snake
-
+snake.update();
 		//2. if the snake is colliding with its own body 
 		//   or if the snake is out of bounds, call gameOver
-
+if (snake.isHeadCollidingWithBody() || snake.isOutOfBounds()) {
+	gameOver();
+}
 		//3. if the location of the head is equal to the location of the food,
 		// 	 feed the snake and set the food location
-
+if (snake.getHeadLocation() == foodLocation) {
+	snake.feed();
+	
+}
+panel.repaint();
 		//4. call panel.repaint();
 	}
 }

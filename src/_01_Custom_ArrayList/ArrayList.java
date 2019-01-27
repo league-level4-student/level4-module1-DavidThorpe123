@@ -3,9 +3,10 @@ package _01_Custom_ArrayList;
 @SuppressWarnings("unchecked")
 
 public class ArrayList <T>{
-	ArrayList<T> al = new ArrayList<>(); 
-	int r;
+	private T[] list;
+	
 	public ArrayList() {
+		list = (T[]) new Object[0];
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
@@ -14,7 +15,6 @@ public class ArrayList <T>{
 	}
 	
 	public void add(T val) {
-		
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {

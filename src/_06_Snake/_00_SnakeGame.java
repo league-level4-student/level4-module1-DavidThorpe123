@@ -87,6 +87,8 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		//   of the game. The smaller the number, the faster it goes.
 
 		//3. start the timer
+		
+	timer.start();
 	}
 
 	public static void main(String[] args) {
@@ -103,6 +105,19 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		//1. Use a switch statement on e.getKeyCode()
 		//   to determine which key was pressed.
+		switch(e.getKeyCode()) {
+		case KeyEvent.VK_LEFT: snake.setDirection(Direction.LEFT);
+		break;
+		case KeyEvent.VK_RIGHT: snake.setDirection(Direction.RIGHT);
+		break;
+		case KeyEvent.VK_UP: snake.setDirection(Direction.UP);
+		break;
+		
+		case KeyEvent.VK_DOWN: snake.setDirection(Direction.DOWN);
+		
+		break;
+		}
+		
 		
 		// if an arrow key is pressed, set the snake's 
 		// direction accordingly
@@ -116,7 +131,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		Location ll = new Location((int)Math.random() * WIDTH, (int) Math.random() * HEIGHT);
 		//2. set the foodLocation variable equal to the Location object you just created.
 		//   use the snake's isLocationOnSnake method to make sure you don't put the food on the snake
-		
+		foodLocation = ll;
 	}
 
 	private void gameOver() {

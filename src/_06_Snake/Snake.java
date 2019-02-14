@@ -38,8 +38,8 @@ public class Snake {
 	public void update() {
 		//1. use a switch statement to check on the currentDirection
 		//   of the snake and calculate its next x and y position.
-		int nextX = 0;
-		int nextY = 0;
+		int nextX = head.getLocation().x;
+		int nextY = head.getLocation().y;
 		
 
 		switch(currentDirection) {
@@ -91,22 +91,24 @@ snake.clear();
 		//2. set the location of the head
 		head.setLocation(loc);
 		//3. add the head to the snake
-		snake.add(0, head);
+		snake.add(head);
 	}
 	
 	public boolean isOutOfBounds() {
 		//1. complete the method so it returns true if the head of the snake is outside of the window
 		//   and false otherwise
+		System.out.println("Head x " + head.getLocation().x);
+		System.out.println("Head y " + head.getLocation().y);
 		if (head.getLocation().x >= _00_SnakeGame.WIDTH) {
 			return true;
 		}
 		if (head.getLocation().y >= _00_SnakeGame.HEIGHT) {
 			return true;
 		}
-		if (head.getLocation().x <= 0) {
+		if (head.getLocation().x < 0) {
 			return true;
 		}
-		if (head.getLocation().y <= 0) {
+		if (head.getLocation().y < 0) {
 			return true;
 		}
 		return false;
@@ -115,9 +117,9 @@ snake.clear();
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
-		for (int i = 0; i < snake.size(); i++) {
+		for (int i = snake.size() - 1; i > 0; i--) {
 			
-			if (head.getLocation() == snake.get(i).getLocation()) {
+			if (head.getLocation().equals(snake.get(i).getLocation())) {
 				return true;
 			}
 			
@@ -129,7 +131,7 @@ snake.clear();
 		//1. complete the method so it returns true if the passed in
 		//   location is located on the snake
 		for (int i = 0; i < snake.size(); i++) {
-			if (snake.get(i).getLocation() == loc) {
+			if (snake.get(i).getLocation().equals(loc) ) {
 				return true;
 			}
 		}
